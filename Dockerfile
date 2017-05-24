@@ -13,8 +13,8 @@ RUN pip install -U libusb1==1.5.3 numpy subprocess32 python-dateutil pyserial pe
 RUN wget https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
 RUN tar xzf android-sdk_r24.4.1-linux.tgz
 RUN /root/android-sdk-linux/tools/android list sdk|egrep 'SDK Tools|SDK Build-tools|SDK Platform-tools|Android 5.0.1, API 21'|awk -F- '{print $1 ","}'|sed -e ':a' -e 'N' -e '$!ba' -e 's/[\n ]//g' > /root/and_in
-RUN (while sleep 3; do echo "y"; done) | /opt/data/android-sdk-linux/tools/android update sdk -s --no-ui --filter `cat /root/and_in`
-RUN rm /opt/data/and_in
+RUN (while sleep 3; do echo "y"; done) | /root/android-sdk-linux/tools/android update sdk -s --no-ui --filter `cat /root/and_in`
+RUN rm /root/and_in
 RUN rm /root/android-sdk_r24.4.1-linux.tgz
 RUN echo export ANDROID_HOME=/root/android-sdk-linux >> /root/.bashrc
 RUN echo export PATH=/root/android-sdk-linux/tools:/root/android-sdk-linux/platform-tools:/root/android-sdk-linux/build-tools:$HOME/.local/bin:\$PATH >> /root/.bashrc
