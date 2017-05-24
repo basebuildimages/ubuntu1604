@@ -25,3 +25,5 @@ RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
+WORKDIR /root/android-sdk-linux
+RUN test -n "$(ls /root/android-sdk-linux/tools)" || unzip /root/android-sdk-linux/temp/tools*.zip 2>&1 > /dev/null
