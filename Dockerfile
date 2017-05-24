@@ -9,7 +9,7 @@ RUN apt-get update -yqq && apt-get install -yqq python-dev wget git lib32stdc++6
 RUN apt-get dist-upgrade -yqq
 RUN wget https://bootstrap.pypa.io/get-pip.py
 RUN python get-pip.py
-RUN pip install -U libusb1==1.5.3 numpy subprocess32 python-dateutil pyserial pexpect matplotlib python-debian psutil paramiko androidviewclient twisted pytesseract selenium pyusb jsonpath-rw
+RUN pip install -U git-review libusb1==1.5.3 numpy subprocess32 python-dateutil pyserial pexpect matplotlib python-debian psutil paramiko androidviewclient twisted pytesseract selenium pyusb jsonpath-rw
 RUN wget https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
 RUN tar xzf android-sdk_r24.4.1-linux.tgz
 RUN /root/android-sdk-linux/tools/android list sdk|egrep 'SDK Tools|SDK Build-tools|SDK Platform-tools|Android 5.0.1, API 21'|awk -F- '{print $1 ","}'|sed -e ':a' -e 'N' -e '$!ba' -e 's/[\n ]//g' > /root/and_in
